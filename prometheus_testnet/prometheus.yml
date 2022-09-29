@@ -39,15 +39,10 @@ scrape_configs:
     static_configs:
       - targets: ['index-node-0:8040']
 
-  - job_name: 'query-node-0'
+  - job_name: 'query-node-1'
     scrape_interval: 5s
     static_configs:
-      - targets: ['query-node-0:8040']
-
-  - job_name: 'indexer-service-mainnet'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['indexer-service-mainnet:7300']
+      - targets: ['query-node-1:8040']
 
   - job_name: 'indexer-service-testnet'
     scrape_interval: 5s

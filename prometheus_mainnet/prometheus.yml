@@ -49,11 +49,6 @@ scrape_configs:
     static_configs:
       - targets: ['indexer-service-mainnet:7300']
 
-  - job_name: 'indexer-service-testnet'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['indexer-service-testnet:7300']
-
   - job_name: 'grafana'
     scrape_interval: 5s
     static_configs:
