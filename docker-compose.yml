@@ -12,7 +12,8 @@ networks:
     driver: bridge
 
 volumes:
-    prometheus_data: {}
+    prometheus_data_mainnet: {}
+    prometheus_data_testnet: {}
     grafana_data: {}
     postgres_data: {}
     postgres_mainnet_agent_data: {}
@@ -550,7 +551,7 @@ services:
       LETSENCRYPT_HOST: ${PROMETHEUS_HOST_MAINNET}
     volumes:
       - ./prometheus_mainnet:/etc/prometheus
-      - prometheus_data:/prometheus
+      - prometheus_data_mainnet:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -582,7 +583,7 @@ services:
       LETSENCRYPT_HOST: ${PROMETHEUS_HOST_TESTNET}
     volumes:
       - ./prometheus_testnet:/etc/prometheus
-      - prometheus_data:/prometheus
+      - prometheus_data_testnet:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
