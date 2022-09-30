@@ -14,7 +14,8 @@ networks:
 volumes:
     prometheus_data_mainnet: {}
     prometheus_data_testnet: {}
-    grafana_data: {}
+    grafana_data_mainnet: {}
+    grafana_data_testnet: {}
     postgres_data: {}
     postgres_mainnet_agent_data: {}
     postgres_testnet_agent_data: {}
