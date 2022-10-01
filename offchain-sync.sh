@@ -19,7 +19,7 @@ select environment in "mainnet" "goerli"; do
         goerli ) select network in ${testnet_networks}; do break;done;break;;
     esac
 done
-echo 
+echo
 echo -e "\e[1;32m How many subgraphs do you want to offchain sync from the available ${network} subgraphs on the ${environment} environment? \e[0m"
 
 read subsnumber
@@ -61,10 +61,11 @@ select yn in "Yes" "No"; do
  done
  echo -e "\e[1;32m Done 👏 \e[0m"
 
+echo
 echo -e "\e[1;32m Should I restart the containers for you so that the changes apply? \e[0m"
 select yn in "Yes" "No"; do
     case $yn in
-         Yes ) bash start --force-recreate indexer-agent;break;;
+         Yes ) bash start --force-recreate indexer-agent-mainnet indexer-agent-testnet;break;;
          No ) exit;;
      esac
  done
