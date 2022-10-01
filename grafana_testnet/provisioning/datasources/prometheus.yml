@@ -5,5 +5,5 @@ datasources:
       name: prometheus
       orgId: 1
       type: prometheus
-      url: http://prometheus:9090/
+      url: http://prometheus-testnet:9090/
       version: 1
