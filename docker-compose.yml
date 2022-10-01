@@ -50,8 +50,8 @@ services:
 
   cli-testnet:
     build:
-      context: ./cli-testnet
-    container_name: cli_testnet
+      context: ./cli_testnet
+    container_name: cli-testnet
     restart: unless-stopped
     environment:
       GEO_COORDINATES: ${GEO_COORDINATES:-69.42069 69.42069}
