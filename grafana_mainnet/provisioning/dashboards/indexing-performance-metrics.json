@@ -24,7 +24,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus-mainnet",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 3,
       "gridPos": {
@@ -125,7 +125,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus-mainnet",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 2,
       "gridPos": {
@@ -226,7 +226,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus-mainnet",
+      "datasource": "prometheus",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -372,7 +372,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus-mainnet",
+      "datasource": "prometheus",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -509,7 +509,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus-mainnet",
+      "datasource": "prometheus",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
