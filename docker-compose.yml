@@ -32,7 +32,7 @@ services:
 
   cli-mainnet:
     build:
-      context: ./cli-mainnet
+      context: ./cli_mainnet
     container_name: cli-mainnet
     restart: unless-stopped
     environment:
@@ -51,7 +51,7 @@ services:
   cli-testnet:
     build:
       context: ./cli-testnet
-    container_name: cli-testnet
+    container_name: cli_testnet
     restart: unless-stopped
     environment:
       GEO_COORDINATES: ${GEO_COORDINATES:-69.42069 69.42069}
