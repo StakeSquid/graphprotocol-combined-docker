@@ -16,7 +16,7 @@ RUN yarn --global --frozen-lockfile --non-interactive --production=false
 RUN ln -s /root/.npm-global/lib/node_modules/@graphprotocol/indexer-cli/packages/indexer-cli/bin/graph-indexer /usr/bin/graph
 
 RUN mkdir -p "/root/.config/graph-cli/"
-RUN echo "api = \"http://indexer-agent:8000/\"" >> "/root/.config/graph-cli/indexing.toml"
+RUN echo "api = \"http://indexer-agent-testnet:8000/\"" >> "/root/.config/graph-cli/indexing.toml"
 
 WORKDIR /root/
 ENTRYPOINT ["cat"]

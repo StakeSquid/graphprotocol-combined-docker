@@ -69,6 +69,6 @@ RUN echo 'export PATH="${HOME}/.npm-global/bin:$PATH"' >> "${GRAPH_HOME}/.bashrc
 
 RUN mkdir "${GRAPH_HOME}/.config/graph-cli/"
 
-RUN echo 'api = "http://indexer-agent:8000/"' >> "${GRAPH_HOME}/.config/graph-cli/indexing.toml"
+RUN echo 'api = "http://indexer-agent-testnet:8000/"' >> "${GRAPH_HOME}/.config/graph-cli/indexing.toml"
 
 ENTRYPOINT [ "cat" ]
