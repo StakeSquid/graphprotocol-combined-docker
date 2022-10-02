@@ -23,7 +23,6 @@ volumes:
     nginx_vhost: {}
     nginx_html: {}
     nginx_acme: {}
-    nginx_passwd: {}
 
 services:
 
@@ -421,7 +420,6 @@ services:
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: nginx-proxy
-    command: bash /run.sh
     depends_on:
       - prometheus-mainnet
       - prometheus-testnet
@@ -444,7 +442,7 @@ services:
       - nginx_certs:/etc/nginx/certs
       - nginx_vhost:/etc/nginx/vhost.d
       - nginx_html:/usr/share/nginx/html
-      - nginx_passwd:/etc/nginx/htpasswd
+      - ./nginx-proxy/htpasswd:/etc/nginx/htpasswd
       - ./nginx-proxy/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx-proxy/run.sh:/run.sh
     networks:
