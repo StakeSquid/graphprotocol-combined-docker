@@ -9,11 +9,11 @@ ingestor = "index_node_0"
 
 [chains.${CHAIN_0_NAME}]
 shard = "primary"
-provider = [ { label = "${CHAIN_0_NAME}", url = "${CHAIN_0_RPC}", features = ["archive", "traces"] } ]
+provider = [ { label = "${CHAIN_0_NAME}", url = "${CHAIN_0_RPC}", features = ${CHAIN_0_FEATURES} } ]
 
 [chains.${CHAIN_1_NAME}]
 shard = "primary"
-provider = [ { label = "${CHAIN_1_NAME}", url = "${CHAIN_1_RPC}", features = ["archive", "traces"] } ]
+provider = [ { label = "${CHAIN_1_NAME}", url = "${CHAIN_1_RPC}", features = ${CHAIN_1_FEATURES} } ]
 
 [deployment]
 [[deployment.rule]]
