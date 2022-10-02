@@ -444,7 +444,6 @@ services:
       - nginx_html:/usr/share/nginx/html
       - ./nginx-proxy/htpasswd:/etc/nginx/htpasswd
       - ./nginx-proxy/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx-proxy/run.sh:/run.sh
     networks:
       - monitor-net
     restart: unless-stopped
