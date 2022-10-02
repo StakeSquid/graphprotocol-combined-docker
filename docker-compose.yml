@@ -474,7 +474,7 @@ services:
       - nginx_vhost:/etc/nginx/vhost.d
       - nginx_html:/usr/share/nginx/html
       - nginx_acme:/etc/acme.sh
-      - nginx_passwd:/etc/nginx/htpasswd
+      - ./nginx-proxy/htpasswd:/etc/nginx/htpasswd
     restart: unless-stopped
     networks:
       - monitor-net
