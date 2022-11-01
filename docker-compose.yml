@@ -68,7 +68,7 @@ services:
 ######################################################################################
 
   indexer-service-mainnet:
-    image: ${INDEXER_SERVICE_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.3}
+    image: ${INDEXER_SERVICE_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.3}
     container_name: indexer-service-mainnet
     depends_on:
       - index-node-0
@@ -111,7 +111,7 @@ services:
 ######################################################################################
 
   indexer-service-testnet:
-    image: ${INDEXER_SERVICE_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.3}
+    image: ${INDEXER_SERVICE_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.5-alpha.1}
     container_name: indexer-service-testnet
     depends_on:
       - index-node-0
@@ -156,7 +156,7 @@ services:
 ######################################################################################
 
   indexer-agent-mainnet:
-    image: ${INDEXER_AGENT_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.3}
+    image: ${INDEXER_AGENT_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.3}
     container_name: indexer-agent-mainnet
     depends_on:
       - index-node-0
@@ -206,7 +206,7 @@ services:
 ######################################################################################
 
   indexer-agent-testnet:
-    image: ${INDEXER_AGENT_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.3}
+    image: ${INDEXER_AGENT_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.5-alpha.1}
     container_name: indexer-agent-testnet
     depends_on:
       - index-node-0
@@ -234,6 +234,7 @@ services:
       INDEXER_AGENT_INDEXER_GEO_COORDINATES: ${GEO_COORDINATES:-60.16952 24.93545}
       INDEXER_AGENT_NETWORK_SUBGRAPH_ENDPOINT: ${INDEXER_AGENT_NETWORK_SUBGRAPH_ENDPOINT_TESTNET:-https://gateway.testnet.thegraph.com/network}
       INDEXER_AGENT_NETWORK_SUBGRAPH_DEPLOYMENT: ${NETWORK_SUBGRAPH_DEPLOYMENT_TESTNET}
+      INDEXER_AGENT_EPOCH_SUBGRAPH_ENDPOINT: ${INDEXER_AGENT_EPOCH_SUBGRAPH_ENDPOINT:-https://api.thegraph.com/subgraphs/name/graphprotocol/goerli-epoch-block-oracle}
       INDEXER_AGENT_POSTGRES_HOST: ${AGENT_DB_HOST:-postgres-testnet-agent}
       INDEXER_AGENT_POSTGRES_USERNAME: ${DB_USER:-graph-node}
       INDEXER_AGENT_POSTGRES_PASSWORD: ${DB_PASS:-db-password}
@@ -260,7 +261,7 @@ services:
 
 
   index-node-0:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.27.0}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.28.2}
     container_name: index-node-0
     depends_on:
       - postgres
@@ -318,7 +319,7 @@ services:
 
 
   query-node-0:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.27.0}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.28.2}
     container_name: query-node-0
     depends_on:
       - postgres
@@ -345,9 +346,9 @@ services:
       GRAPH_KILL_IF_UNRESPONSIVE: "true"
       GRAPH_LOG_QUERY_TIMING: ${GRAPH_LOG_QUERY_TIMING:-gql}
       GRAPH_ALLOW_NON_DETERMINISTIC_FULLTEXT_SEARCH: ${FULLTEXT_SEARCH:-true}
-      VIRTUAL_HOST: ${QUERY_HOST_MAINNET}
-      VIRTUAL_PORT: 8000
-      LETSENCRYPT_HOST: ${QUERY_HOST_MAINNET}
+      #VIRTUAL_HOST: ${QUERY_HOST_MAINNET}
+      #VIRTUAL_PORT: 8000
+      #LETSENCRYPT_HOST: ${QUERY_HOST_MAINNET}
     restart: unless-stopped
     logging:
         driver: "journald"
@@ -393,9 +394,9 @@ services:
       GRAPH_KILL_IF_UNRESPONSIVE: "true"
       GRAPH_LOG_QUERY_TIMING: ${GRAPH_LOG_QUERY_TIMING:-gql}
       GRAPH_ALLOW_NON_DETERMINISTIC_FULLTEXT_SEARCH: ${FULLTEXT_SEARCH:-true}
-      VIRTUAL_HOST: ${QUERY_HOST_TESTNET}
-      VIRTUAL_PORT: 8000
-      LETSENCRYPT_HOST: ${QUERY_HOST_TESTNET}
+      #VIRTUAL_HOST: ${QUERY_HOST_TESTNET}
+      #VIRTUAL_PORT: 8000
+      #LETSENCRYPT_HOST: ${QUERY_HOST_TESTNET}
     restart: unless-stopped
     logging:
         driver: "journald"
@@ -536,7 +537,7 @@ services:
 
 
 ######################################################################################
-#####################    POSTGRES AGENT MAINNET CONTAINER      #######################
+#####################    POSTGRES AGENT TESTNET CONTAINER      #######################
 ######################################################################################
 
 
@@ -742,7 +743,7 @@ services:
 
 
 ######################################################################################
-#####################           GRAFANA CONTAINER              #######################
+#####################           GRAFANA TESTNET CONTAINER              ###############
 ######################################################################################
 
 
