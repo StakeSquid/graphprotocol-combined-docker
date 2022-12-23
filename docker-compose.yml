@@ -68,7 +68,7 @@ services:
 ######################################################################################
 
   indexer-service-mainnet:
-    image: ${INDEXER_SERVICE_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.3}
+    image: ${INDEXER_SERVICE_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.8}
     container_name: indexer-service-mainnet
     depends_on:
       - index-node-0
@@ -111,7 +111,7 @@ services:
 ######################################################################################
 
   indexer-service-testnet:
-    image: ${INDEXER_SERVICE_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.5-alpha.1}
+    image: ${INDEXER_SERVICE_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.8}
     container_name: indexer-service-testnet
     depends_on:
       - index-node-0
@@ -156,7 +156,7 @@ services:
 ######################################################################################
 
   indexer-agent-mainnet:
-    image: ${INDEXER_AGENT_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.3}
+    image: ${INDEXER_AGENT_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.8}
     container_name: indexer-agent-mainnet
     depends_on:
       - index-node-0
@@ -173,8 +173,12 @@ services:
       INDEXER_AGENT_INDEXER_ADDRESS: ${STAKING_WALLET_ADDRESS_MAINNET}
       INDEXER_AGENT_INDEX_NODE_IDS: "index_node_0"
       INDEXER_AGENT_INJECT_DAI: "true"
-      INDEXER_AGENT_ALLOCATION_CLAIM_THRESHOLD: ${QUERY_FEE_REBATE_CLAIM_THRESHOLD_MAINNET:-0}
-      INDEXER_AGENT_REBATE_CLAIM_BATCH_THRESHOLD: ${REBATE_CLAIM_BATCH_THRESHOLD_MAINNET:-0}
+      INDEXER_AGENT_REBATE_CLAIM_TRESHOLD: ${REBATE_CLAIM_TRESHOLD_MAINNET:-200}
+      INDEXER_AGENT_REBATE_CLAIM_BATCH_THRESHOLD: ${REBATE_CLAIM_BATCH_THRESHOLD_MAINNET:-2000}
+      INDEXER_AGENT_REBATE_CLAIM_MAX_BATCH_SIZE: ${REBATE_CLAIM_MAX_BATCH_SIZE_MAINNET:-100}
+      INDEXER_AGENT_VOUCHER_REDEMPTION_THRESHOLD: ${VOUCHER_REDEMPTION_THRESHOLD_MAINNET:-200}
+      INDEXER_AGENT_VOUCHER_REDEMPTION_BATCH_THRESHOLD: ${VOUCHER_REDEMPTION_BATCH_THRESHOLD_MAINNET:-2000}
+      INDEXER_AGENT_VOUCHER_REDEMPTION_MAX_BATCH_SIZE: ${VOUCHER_REDEMPTION_MAX_BATCH_SIZE_MAINNET:-100}
       INDEXER_AGENT_ETHEREUM_NETWORK: mainnet
       INDEXER_AGENT_ETHEREUM: ${TXN_RPC_MAINNET}
       INDEXER_AGENT_GRAPH_NODE_QUERY_ENDPOINT: http://query-node-0:8000
@@ -183,12 +187,13 @@ services:
       INDEXER_AGENT_PUBLIC_INDEXER_URL: 'https://${INDEX_HOST_MAINNET}/'
       INDEXER_AGENT_INDEXER_GEO_COORDINATES: ${GEO_COORDINATES:-60.16952 24.93545}
       INDEXER_AGENT_NETWORK_SUBGRAPH_ENDPOINT: ${INDEXER_AGENT_NETWORK_SUBGRAPH_ENDPOINT_MAINNET:-https://gateway.thegraph.com/network}
+      INDEXER_AGENT_EPOCH_SUBGRAPH_ENDPOINT: ${INDEXER_AGENT_EPOCH_SUBGRAPH_ENDPOINT_MAINNET:-https://api.thegraph.com/subgraphs/name/graphprotocol/mainnet-epoch-block-oracle}
       INDEXER_AGENT_NETWORK_SUBGRAPH_DEPLOYMENT: ${NETWORK_SUBGRAPH_DEPLOYMENT_MAINNET}
       INDEXER_AGENT_POSTGRES_HOST: ${AGENT_DB_HOST:-postgres-mainnet-agent}
       INDEXER_AGENT_POSTGRES_USERNAME: ${DB_USER:-graph-node}
       INDEXER_AGENT_POSTGRES_PASSWORD: ${DB_PASS:-db-password}
       INDEXER_AGENT_POSTGRES_DATABASE: ${AGENT_DB_NAME_MAINNET:-postgres-mainnet-agent}
-      INDEXER_AGENT_DAI_CONTRACT: "0x9e7e607afd22906f7da6f1ec8f432d6f244278be"
+      INDEXER_AGENT_DAI_CONTRACT: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
       #INDEXER_AGENT_VECTOR_NODE: "http://vector-node:8000"
       #INDEXER_AGENT_VECTOR_EVENT_SERVER: "http://indexer-agent:8001"
       #INDEXER_AGENT_VECTOR_EVENT_SERVER_PORT: 8001
@@ -206,7 +211,7 @@ services:
 ######################################################################################
 
   indexer-agent-testnet:
-    image: ${INDEXER_AGENT_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.5-alpha.1}
+    image: ${INDEXER_AGENT_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.8}
     container_name: indexer-agent-testnet
     depends_on:
       - index-node-0
@@ -223,8 +228,12 @@ services:
       INDEXER_AGENT_INDEXER_ADDRESS: ${STAKING_WALLET_ADDRESS_TESTNET}
       INDEXER_AGENT_INDEX_NODE_IDS: "index_node_0"
       INDEXER_AGENT_INJECT_DAI: "true"
-      INDEXER_AGENT_ALLOCATION_CLAIM_THRESHOLD: ${QUERY_FEE_REBATE_CLAIM_THRESHOLD_TESTNET:-0}
-      INDEXER_AGENT_REBATE_CLAIM_BATCH_THRESHOLD: ${REBATE_CLAIM_BATCH_THRESHOLD_TESTNET:-0}
+      INDEXER_AGENT_REBATE_CLAIM_TRESHOLD: ${REBATE_CLAIM_TRESHOLD_TESTNET:-200}
+      INDEXER_AGENT_REBATE_CLAIM_BATCH_THRESHOLD: ${REBATE_CLAIM_BATCH_THRESHOLD_TESTNET:-2000}
+      INDEXER_AGENT_REBATE_CLAIM_MAX_BATCH_SIZE: ${REBATE_CLAIM_MAX_BATCH_SIZE_TESTNET:-100}
+      INDEXER_AGENT_VOUCHER_REDEMPTION_THRESHOLD: ${VOUCHER_REDEMPTION_THRESHOLD_TESTNET:-200}
+      INDEXER_AGENT_VOUCHER_REDEMPTION_BATCH_THRESHOLD: ${VOUCHER_REDEMPTION_BATCH_THRESHOLD_TESTNET:-2000}
+      INDEXER_AGENT_VOUCHER_REDEMPTION_MAX_BATCH_SIZE: ${VOUCHER_REDEMPTION_MAX_BATCH_SIZE_TESTNET:-100}
       INDEXER_AGENT_ETHEREUM_NETWORK: goerli
       INDEXER_AGENT_ETHEREUM: ${TXN_RPC_TESTNET}
       INDEXER_AGENT_GRAPH_NODE_QUERY_ENDPOINT: http://query-node-1:8000
@@ -239,7 +248,7 @@ services:
       INDEXER_AGENT_POSTGRES_USERNAME: ${DB_USER:-graph-node}
       INDEXER_AGENT_POSTGRES_PASSWORD: ${DB_PASS:-db-password}
       INDEXER_AGENT_POSTGRES_DATABASE: ${AGENT_DB_NAME_TESTNET:-postgres-testnet-agent}
-      INDEXER_AGENT_DAI_CONTRACT: "0x9e7e607afd22906f7da6f1ec8f432d6f244278be"
+      INDEXER_AGENT_DAI_CONTRACT: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
       #INDEXER_AGENT_VECTOR_NODE: "http://vector-node:8000"
       #INDEXER_AGENT_VECTOR_EVENT_SERVER: "http://indexer-agent:8001"
       #INDEXER_AGENT_VECTOR_EVENT_SERVER_PORT: 8001
@@ -261,7 +270,7 @@ services:
 
 
   index-node-0:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.28.2}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.29.0}
     container_name: index-node-0
     depends_on:
       - postgres
@@ -319,7 +328,7 @@ services:
 
 
   query-node-0:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.28.2}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.29.0}
     container_name: query-node-0
     depends_on:
       - postgres
@@ -367,7 +376,7 @@ services:
 
 
   query-node-1:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.27.0}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.29.0}
     container_name: query-node-1
     depends_on:
       - postgres
