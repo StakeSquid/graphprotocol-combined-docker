@@ -68,7 +68,7 @@ services:
 ######################################################################################
 
   indexer-service-mainnet:
-    image: ${INDEXER_SERVICE_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.11}
+    image: ${INDEXER_SERVICE_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.12}
     container_name: indexer-service-mainnet
     depends_on:
       - index-node-0
@@ -111,7 +111,7 @@ services:
 ######################################################################################
 
   indexer-service-testnet:
-    image: ${INDEXER_SERVICE_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.11}
+    image: ${INDEXER_SERVICE_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-service:v0.20.12}
     container_name: indexer-service-testnet
     depends_on:
       - index-node-0
@@ -156,7 +156,7 @@ services:
 ######################################################################################
 
   indexer-agent-mainnet:
-    image: ${INDEXER_AGENT_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.11}
+    image: ${INDEXER_AGENT_MAINNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.12}
     container_name: indexer-agent-mainnet
     depends_on:
       - index-node-0
@@ -211,7 +211,7 @@ services:
 ######################################################################################
 
   indexer-agent-testnet:
-    image: ${INDEXER_AGENT_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.11}
+    image: ${INDEXER_AGENT_TESTNET_VERSION:-ghcr.io/graphprotocol/indexer-agent:v0.20.12}
     container_name: indexer-agent-testnet
     depends_on:
       - index-node-0
@@ -270,7 +270,7 @@ services:
 
 
   index-node-0:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.29.0}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.30.0}
     container_name: index-node-0
     depends_on:
       - postgres
@@ -329,7 +329,7 @@ services:
 
 
   query-node-0:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.29.0}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.30.0}
     container_name: query-node-0
     depends_on:
       - postgres
@@ -377,7 +377,7 @@ services:
 
 
   query-node-1:
-    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.29.0}
+    image: ${GRAPH_NODE_VERSION:-graphprotocol/graph-node:v0.30.0}
     container_name: query-node-1
     depends_on:
       - postgres
